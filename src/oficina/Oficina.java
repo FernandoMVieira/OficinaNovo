@@ -20,23 +20,27 @@ public class Oficina {
         Funcionario f1 = new Funcionario();
         Cliente c1 = new Cliente();
         
-        f1.setIdfuncionario("1001");
+        f1.setIdfuncionario("1002");
         f1.setNome("Dani");
         f1.setCpf("157.157.157.157");
         f1.setMatricula(1001);
         
-        con.adicionaFuncionario(f1);
+        //con.adicionaFuncionario(f1);
+        con.alteraFuncionario(f1);
         
-        System.out.println("Funcionario novo adicionado");
+        //System.out.println("Funcionario novo adicionado");
+        System.out.println("Funcionario alterado com sucesso");
         
-        c1.setIdcliente("5005");
+        c1.setIdcliente("5010");
         c1.setNome("Fabi");
         c1.setCpf("999.999.999.999");
         
-        con.adicionaCliente(c1);
+        //con.adicionaCliente(c1);
+        con.alteraCliente(c1);
         
         // mudei alguma coisa 
-        System.out.println("Cliente novo adicionado");
+        //System.out.println("Cliente novo adicionado");
+        System.out.println("Cliente alterado com sucesso");
   
     }
     
