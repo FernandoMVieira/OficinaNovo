@@ -20,8 +20,8 @@ public class Oficina {
         Funcionario f1 = new Funcionario();
         Cliente c1 = new Cliente();
         
-        f1.setIdfuncionario("1002");
-        f1.setNome("Dani");
+        f1.setIdfuncionario("1001");
+        f1.setNome("Daniel");
         f1.setCpf("157.157.157.157");
         f1.setMatricula(1001);
         
@@ -31,8 +31,8 @@ public class Oficina {
         //System.out.println("Funcionario novo adicionado");
         System.out.println("Funcionario alterado com sucesso");
         
-        c1.setIdcliente("5010");
-        c1.setNome("Fabi");
+        c1.setIdcliente("5005");
+        c1.setNome("Fabio");
         c1.setCpf("999.999.999.999");
         
         //con.adicionaCliente(c1);
