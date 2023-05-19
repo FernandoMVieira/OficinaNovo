@@ -121,6 +121,65 @@ public class Conecta {
         }
     }
     
+    public void alteraCliente(Cliente cliente) {
+	String sql = "update clientes set Nome=?, CPF=? where idClientes=?";
+	 
+	try {
+            try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+                stmt.setString(1, cliente.getNome());
+                stmt.setString(2, cliente.getCpf());
+                stmt.setString(3, cliente.getIdcliente());
+                stmt.execute();
+            }
+	} catch (SQLException e) {
+	    throw new RuntimeException(e);
+	}
+    }
+    
+    public void alteraFuncionario(Funcionario funcionario) {
+	String sql = "update funcionarios set Nome=?, CPF=?, Matricula=?"
+                +" where idFuncionarios=?";
+	 
+	try {
+            try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+                stmt.setString(1, funcionario.getNome());
+                stmt.setString(2, funcionario.getCpf());
+                stmt.setString(3, funcionario.getMatricula());
+                stmt.setString(4, funcionario.getIdfuncionario());
+                stmt.execute();
+            }
+	} catch (SQLException e) {
+	    throw new RuntimeException(e);
+	}
+    }
+    
+    public void removeCliente(int id) {
+	try {
+            PreparedStatement stmt = connection
+                .prepareStatement("delete from clientes where idClientes=?");
+            stmt.setInt(1, id);
+            stmt.execute();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public void removeFuncionario(int id) {
+	try {
+            PreparedStatement stmt = connection
+                .prepareStatement("delete from funcionarios where idFuncionarios=?");
+            stmt.setInt(1, id);
+            stmt.execute();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+  
+    
+    
+    
     
     
     
@@ -158,4 +217,8 @@ public class Conecta {
 	     }
         }
 */
+
+    void removeFuncioanrio(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

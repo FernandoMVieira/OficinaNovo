@@ -56,7 +56,8 @@ public class Oficina {
 	}
     }
     
-        public static void listarFuncionarios(){
+    
+    public static void listarFuncionarios(){
         List<Funcionario> funcionarios = con.getListaFuncionarios();
 
 	for (Funcionario f : funcionarios) {
@@ -67,6 +68,63 @@ public class Oficina {
 	}
     }
     
+    public static void alterarCliente(){
+		
+        String id = JOptionPane.showInputDialog("Digite o ID do cliente:");
+	String nome = JOptionPane.showInputDialog("Digite o Nome:");
+	String cpf = JOptionPane.showInputDialog("Digite o CPF:");
+		
+	Cliente cliente = new Cliente();
+        cliente.setIdcliente(id);
+	cliente.setNome(nome);
+	cliente.setCpf(cpf);
+
+	con.alteraCliente(cliente);
+
+        System.out.println("Cliente alterado!");
+    }
+    
+    public static void alterarFuncionario(){
+		
+        String id = JOptionPane.showInputDialog("Digite o ID do funcionario:");
+	String nome = JOptionPane.showInputDialog("Digite o Nome:");
+	String cpf = JOptionPane.showInputDialog("Digite o CPF:");
+        String matricula = JOptionPane.showInputDialog("Digite a Matricula:");
+		
+	Funcionario funcionario = new Funcionario();
+        funcionario.setIdfuncionario(id);
+	funcionario.setNome(nome);
+	funcionario.setCpf(cpf);
+        funcionario.setMatricula(matricula);
+
+	con.alteraFuncionario(funcionario);
+
+        System.out.println("Funcionario alterado!");
+    }
+    
+    public static void removerCliente(){
+
+	String entrada = JOptionPane.showInputDialog("Digite o id do cliente:");
+	int id = Integer.parseInt(entrada);
+			
+	
+	con.removeCliente(id);
+
+	System.out.println("Cliente Removido!");
+    }
+    
+    public static void removerFuncionario(){
+
+	String entrada = JOptionPane.showInputDialog("Digite o id do funcionario:");
+	int id = Integer.parseInt(entrada);
+			
+	
+	con.removeFuncionario(id);
+
+	System.out.println("Funcionario Removido!");
+    }
+    
+    
     
     public static void main(String[] args) {
         
@@ -75,7 +133,12 @@ public class Oficina {
         //inserirCliente();
         //inserirFuncionario();
         //listarClientes();
-        listarFuncionarios();
+        //listarFuncionarios();
+        //alterarCliente();
+        //alterarFuncionario();
+        removerCliente();
+        removerFuncionario();
+        
         
     }
     
