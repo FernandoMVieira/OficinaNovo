@@ -1,47 +1,82 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package oficina;
 
-/**
- *
- * @author aluno
- */
+import java.util.List;
+
+import javax.swing.JOptionPane;
+
 public class Oficina {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        Conecta con = new Conecta();
-        Funcionario f1 = new Funcionario();
+    static Conecta con;
+    
+    public static void ConectaBD(){
+        con = new Conecta();
+    }
+    
+    public static void inserirCliente(){
+
+        String nome = JOptionPane.showInputDialog("Digite o nome:");
+        String cpf = JOptionPane.showInputDialog("Digite o CPF:");
+		
         Cliente c1 = new Cliente();
+               
+        c1.setNome(nome);
+        c1.setCpf(cpf);
+                
+        con.adicionaCliente(c1);
         
-        f1.setIdfuncionario("1001");
-        f1.setNome("Daniel");
-        f1.setCpf("157.157.157.157");
-        f1.setMatricula(1001);
+	System.out.println("Cliente adicionado!");
+    }
+    
+    public static void inserirFuncionario(){
+
+        String nome = JOptionPane.showInputDialog("Digite o nome:");
+        String cpf = JOptionPane.showInputDialog("Digite o CPF:");
+        String matricula = JOptionPane.showInputDialog("Digite a Matricula:");
+		
+        Funcionario f1 = new Funcionario();
+               
+        f1.setNome(nome);
+        f1.setCpf(cpf);
+        f1.setMatricula(matricula);
+                
+        con.adicionaFuncionario(f1);
         
-        //con.adicionaFuncionario(f1);
-        con.alteraFuncionario(f1);
+	System.out.println("Funcionario adicionado!");
+    }
+    
+    
+    public static void listarClientes(){
+        List<Cliente> contatos = con.getListaClientes();
+
+	for (Cliente c : contatos) {
+            System.out.println("ID: " + c.getIdcliente());
+            System.out.println("Nome: " + c.getNome());
+            System.out.println("CPF: " + c.getCpf() + "\n");
+	}
+    }
+    
+        public static void listarFuncionarios(){
+        List<Funcionario> funcionarios = con.getListaFuncionarios();
+
+	for (Funcionario f : funcionarios) {
+            System.out.println("ID: " + f.getIdfuncionario());
+            System.out.println("Nome: " + f.getNome());
+            System.out.println("CPF: " + f.getCpf() + "\n");
+            System.out.println("Matricula: " + f.getMatricula() + "\n");
+	}
+    }
+    
+    
+    public static void main(String[] args) {
         
-        //System.out.println("Funcionario novo adicionado");
-        System.out.println("Funcionario alterado com sucesso");
+        ConectaBD();
         
-        c1.setIdcliente("5005");
-        c1.setNome("Fabio");
-        c1.setCpf("999.999.999.999");
+        //inserirCliente();
+        //inserirFuncionario();
+        //listarClientes();
+        listarFuncionarios();
         
-        //con.adicionaCliente(c1);
-        con.alteraCliente(c1);
-        
-        // mudei alguma coisa 
-        //System.out.println("Cliente novo adicionado");
-        System.out.println("Cliente alterado com sucesso");
-  
     }
     
 }

@@ -12,13 +12,13 @@ package oficina;
 public class Funcionario extends Pessoa {
     
     private String idfuncionario;
-    private int matricula;
+    private String matricula;
 
     public void setIdfuncionario(String idfuncionario) {
         this.idfuncionario = idfuncionario;
     }
 
-    public void setMatricula(int matricula) {
+    public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
 
@@ -26,7 +26,7 @@ public class Funcionario extends Pessoa {
         return idfuncionario;
     }
 
-    public int getMatricula() {
+    public String getMatricula() {
         return matricula;
     }
 }

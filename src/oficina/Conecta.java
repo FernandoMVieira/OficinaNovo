@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package oficina;
 
 import java.sql.Connection;
@@ -12,10 +8,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-/**
- *
- * @author aluno
- */
+
+
+
+
 public class Conecta {
     
       // a conexão com o banco de dados
@@ -37,16 +33,15 @@ public class Conecta {
     }
   
     public void adicionaCliente(Cliente cliente) {
-	String sql = "insert into cliente " +
-	            "(idCliente,Nome,Cpf)" +
-	            " values (?,?,?)";
+	String sql = "insert into clientes " +
+	            "(Nome,CPF)" +
+	            " values (?,?)";
 	try {
 	    // prepared statement para inserção
 	    PreparedStatement stmt = connection.prepareStatement(sql);
 	    // seta os valores
-	    stmt.setString(1,cliente.getIdcliente());
-	    stmt.setString(2,cliente.getNome());
-	    stmt.setString(3,cliente.getCpf());
+	    stmt.setString(1,cliente.getNome());
+	    stmt.setString(2,cliente.getCpf());
 	        // executa
 	    stmt.execute();
 	    stmt.close();
@@ -56,17 +51,16 @@ public class Conecta {
     }
     
     public void adicionaFuncionario(Funcionario funcionario) {
-	String sql = "insert into funcionario " +
-	            "(idFuncionario,Nome,Cpf, matricula)" +
-	            " values (?,?,?,?)";
+	String sql = "insert into funcionarios " +
+	            "(Nome,CPF, Matricula)" +
+	            " values (?,?,?)";
 	try {
 	    // prepared statement para inserção
 	    PreparedStatement stmt = connection.prepareStatement(sql);
 	    // seta os valores
-	    stmt.setString(1,funcionario.getIdfuncionario());
-	    stmt.setString(2,funcionario.getNome());
-	    stmt.setString(3,funcionario.getCpf());
-            stmt.setInt(4,funcionario.getMatricula());
+	    stmt.setString(1,funcionario.getNome());
+	    stmt.setString(2,funcionario.getCpf());
+            stmt.setString(3,funcionario.getMatricula());
 	        // executa
 	    stmt.execute();
 	    stmt.close();
@@ -75,6 +69,62 @@ public class Conecta {
 	}
     }
     
+    public List<Cliente> getListaClientes() {
+	try {
+	    List<Cliente> Cliente = new ArrayList<Cliente>();
+	    PreparedStatement stmt = this.connection.
+	        prepareStatement("select * from clientes");
+	    ResultSet rs = stmt.executeQuery();
+	 
+	    while (rs.next()) {
+	        // criando o objeto Contato
+	        Cliente cliente = new Cliente();
+	        cliente.setIdcliente(rs.getString("idClientes"));
+	        cliente.setNome(rs.getString("Nome"));
+	        cliente.setCpf(rs.getString("CPF"));
+
+	          
+	        // adicionando o objeto à lista
+	        Cliente.add(cliente);
+	    }
+	    rs.close();
+	    stmt.close();
+	    return Cliente;
+	} catch (SQLException e) {
+	        throw new RuntimeException(e);
+        }
+    }
+    
+    public List<Funcionario> getListaFuncionarios() {
+	try {
+	    List<Funcionario> Funcionario = new ArrayList<Funcionario>();
+	    PreparedStatement stmt = this.connection.
+	        prepareStatement("select * from funcionarios");
+	    ResultSet rs = stmt.executeQuery();
+	 
+	    while (rs.next()) {
+	        // criando o objeto Contato
+	        Funcionario funcionario = new Funcionario();
+	        funcionario.setIdfuncionario(rs.getString("idFuncionarios"));
+	        funcionario.setNome(rs.getString("Nome"));
+	        funcionario.setCpf(rs.getString("CPF"));
+                funcionario.setMatricula(rs.getString("Matricula"));
+	          
+	        // adicionando o objeto à lista
+	        Funcionario.add(funcionario);
+	    }
+	    rs.close();
+	    stmt.close();
+	    return Funcionario;
+	} catch (SQLException e) {
+	        throw new RuntimeException(e);
+        }
+    }
+    
+    
+    
+    
+    /*
     public void alteraCliente(Cliente cliente) {
 	     String sql = "update cliente set nome=?, Cpf =?"+
 	             "where idCliente=?";
@@ -107,4 +157,5 @@ public class Conecta {
 	         throw new RuntimeException(e);
 	     }
         }
+*/
 }
