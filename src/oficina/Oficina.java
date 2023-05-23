@@ -131,15 +131,14 @@ public class Oficina {
         ConectaBD();
         
         //inserirCliente();
-        //inserirFuncionario();
-        //listarClientes();
+        inserirFuncionario();
+        listarClientes();
         //listarFuncionarios();
         //alterarCliente();
         //alterarFuncionario();
-        removerCliente();
-        removerFuncionario();
-        
-        
+        //removerCliente();
+        //removerFuncionario();
+
     }
     
 }

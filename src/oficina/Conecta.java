@@ -176,49 +176,4 @@ public class Conecta {
             throw new RuntimeException(e);
         }
     }
-  
-    
-    
-    
-    
-    
-    
-    /*
-    public void alteraCliente(Cliente cliente) {
-	     String sql = "update cliente set nome=?, Cpf =?"+
-	             "where idCliente=?";
-           
-	     try {
-	         PreparedStatement stmt = connection.prepareStatement(sql);
-	         stmt.setString(1,cliente.getIdcliente());
-	         stmt.setString(2,cliente.getNome());
-	         stmt.setString(3,cliente.getCpf());
-	         stmt.execute();
-	         stmt.close();
-	     } catch (SQLException e) {
-	         throw new RuntimeException(e);
-	     }
-	}
-    
-    public void alteraFuncionario(Funcionario funcionario) {
-	     String sql = "update funcionario set Nome=?, Cpf=?,"+
-	             "matricula=? where idfuncionario=?";
-	 
-	     try {
-	         PreparedStatement stmt = connection.prepareStatement(sql);
-	         stmt.setString(1,funcionario.getIdfuncionario());
-	         stmt.setString(2,funcionario.getNome());
-	         stmt.setString(3,funcionario.getCpf());
-                 stmt.setInt(4,funcionario.getMatricula());
-	         stmt.execute();
-	         stmt.close();
-	     } catch (SQLException e) {
-	         throw new RuntimeException(e);
-	     }
-        }
-*/
-
-    void removeFuncioanrio(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
