@@ -131,14 +131,18 @@ public class Oficina {
         ConectaBD();
         
         //inserirCliente();
-        inserirFuncionario();
-        listarClientes();
+        //inserirFuncionario();
+        //listarClientes();
         //listarFuncionarios();
         //alterarCliente();
         //alterarFuncionario();
         //removerCliente();
         //removerFuncionario();
-
+        int x = con.getTotalClientes();
+        int y = con.getTotalFuncionarios();
+        
+        System.out.println(x);
+        System.out.println(y);
     }
     
 }
